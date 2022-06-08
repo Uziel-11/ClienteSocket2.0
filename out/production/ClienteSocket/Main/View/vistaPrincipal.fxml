@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller.Controller">
+   <children>
+      <TextField fx:id="txtEnviar" layoutX="14.0" layoutY="441.0" prefHeight="31.0" prefWidth="214.0" />
+      <Button layoutX="234.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnEnviarOnMouseClicked" prefHeight="31.0" prefWidth="58.0" text="Enviar" />
+      <ComboBox fx:id="usuarios" layoutX="26.0" layoutY="27.0" prefWidth="150.0" promptText="Selecciona Usuario" />
+<!--      <TextField fx:id="id" layoutX="215.0" layoutY="26.0" prefHeight="26.0" prefWidth="65.0" promptText="ID" />-->
+      <Label fx:id="conexion" layoutX="26.0" layoutY="67.0" prefHeight="26.0" prefWidth="150.0" textFill="#1da438">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextArea fx:id="textArea" editable="false" layoutX="19.0" layoutY="110.0" prefHeight="318.0" prefWidth="262.0" />
+   </children>
+</AnchorPane>

@@ -32,7 +32,6 @@ public class IngresarID {
             datos.setNombre(id);
             datos.setIp("localhost");
             datos.setPuerto(3000);
-            //btnConectarOnMouseClicked();
             Stage st;
             Parent root = FXMLLoader.load(getClass().getResource("../View/vistaPrincipal.fxml"));
 
@@ -43,9 +42,6 @@ public class IngresarID {
             st.setScene(scene);
             st.setTitle("WhatsApp 213.221.2");
             st.show();
-
-//            Controller controller = new Controller();
-//            controller.btnConectarOnMouseClicked();
         }
 
     }
