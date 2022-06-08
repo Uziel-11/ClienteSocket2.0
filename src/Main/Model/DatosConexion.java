@@ -1,16 +1,16 @@
 package Main.Model;
 
-public class Datos {
+public class DatosConexion {
 
     static private int puerto;
     static private String ip;
     static private String nombre;
 
-    public Datos(){
+    public DatosConexion(){
 
     }
 
-    public Datos(int puerto, String ip, String nombre) {
+    public DatosConexion(int puerto, String ip, String nombre) {
         this.puerto = puerto;
         this.ip = ip;
         this.nombre = nombre;
