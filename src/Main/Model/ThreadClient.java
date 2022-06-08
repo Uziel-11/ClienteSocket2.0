@@ -51,13 +51,13 @@ public class ThreadClient extends Observable implements Runnable {
                     String[] array = st.split(":");
 
                     if (array[0].equals("Conectado")){
-                        Datos datos = new Datos();
+                        DatosConexion datos = new DatosConexion();
                         if (array[2].equals(datos.getNombre())){
                             System.out.println(array[1]);
                             dat.setId(datos.getNombre());
-                            dat.setSms(array[1]);
+                            dat.setMensaje(array[1]);
                             list.add(dat);
-                            textArea.setText(list.get(0).getSms());
+                            textArea.setText(list.get(0).getMensaje());
                             obd.clear();
                             for (int i =4; i < Arrays.stream(array).count(); i++){
                                 if (datos.getNombre().equals(array[i])){
@@ -69,11 +69,11 @@ public class ThreadClient extends Observable implements Runnable {
 
                         }else {
                             System.out.println(array[2]);
-                            String sms = list.get(0).getSms();
+                            String mensaje = list.get(0).getMensaje();
                             dat.setId(datos.getNombre());
-                            dat.setSms(sms+"\n"+"Se a Conectado: "+array[2]);
+                            dat.setMensaje(mensaje+"\n"+"Se a Conectado: "+array[2]);
                             list.add(dat);
-                            textArea.setText(list.get(0).getSms());
+                            textArea.setText(list.get(0).getMensaje());
                             obd.clear();
                             for (int i =4; i < Arrays.stream(array).count(); i++){
                                 if (datos.getNombre().equals(array[i])){
@@ -87,20 +87,20 @@ public class ThreadClient extends Observable implements Runnable {
                         System.out.println("Insertando en su respectiva celda --> "+st);
                         for (int i=0; i < list.size(); i++) {
                             if (list.get(i).getId().equals(array[0])) {
-                                String sms = list.get(i).getSms() + "\n" + array[0] + ": " + array[2];
+                                String mensaje = list.get(i).getMensaje() + "\n" + array[0] + ": " + array[2];
                                 dat.setId(array[0]);
-                                dat.setSms(sms);
+                                dat.setMensaje(mensaje);
                                 list.add(i, dat);
-                                textArea.setText(list.get(i).getSms());
+                                textArea.setText(list.get(i).getMensaje());
                                 aux = true;
                                 i = list.size();
                             }
 
                             if (aux == false){
                                 dat.setId(array[0]);
-                                dat.setSms(array[0]+": "+array[2]);
+                                dat.setMensaje(array[0]+": "+array[2]);
                                 list.add(dat);
-                                textArea.setText(list.get(i).getSms());
+                                textArea.setText(list.get(i).getMensaje());
                                 aux = true;
                                 i = list.size();
                             }
@@ -119,14 +119,14 @@ public class ThreadClient extends Observable implements Runnable {
 
     }
 
-    public void misms(String misms, String usuario){
+    public void mostrarMensajes(String miMensaje, String usuario){
         for (int i=0; i<list.size(); i++){
             if (list.get(i).getId().equals(usuario)){
-                String sms = list.get(i).getSms()+"\n"+misms;
+                String sms = list.get(i).getMensaje()+"\n"+miMensaje;
                 dat.setId(usuario);
-                dat.setSms(sms);
+                dat.setMensaje(sms);
                 list.add(i, dat);
-                textArea.setText(list.get(i).getSms());
+                textArea.setText(list.get(i).getMensaje());
                 i = list.size();
             }
         }

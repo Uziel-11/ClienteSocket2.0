@@ -1,7 +1,7 @@
 package Main.Controller;
 
 
-import Main.Model.Datos;
+import Main.Model.DatosConexion;
 import Main.Model.ThreadClient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +20,7 @@ public class Controller implements  Initializable {
     private TextArea textArea;
 
     @FXML
-    private ComboBox<String> usuarios;
+    private ComboBox<String> usuariosConectados;
     @FXML
     private Label conexion;
 
@@ -29,8 +29,8 @@ public class Controller implements  Initializable {
 
 
     @FXML
-    void btnConectarOnMouseClicked() {
-        Datos datos = new Datos();
+    void conectar_al_Servidor() {
+        DatosConexion datos = new DatosConexion();
         try {
             socket = new Socket(datos.getIp(), datos.getPuerto());
             bufferDeSalida = new DataOutputStream(socket.getOutputStream());
@@ -38,7 +38,7 @@ public class Controller implements  Initializable {
             bufferDeSalida.flush();
 
             System.out.println(datos.getNombre()+"  "+ datos.getIp());
-            ThreadClient cliente = new ThreadClient(socket, conexion, textArea, usuarios);
+            ThreadClient cliente = new ThreadClient(socket, conexion, textArea, usuariosConectados);
             new Thread(cliente).start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,15 +47,15 @@ public class Controller implements  Initializable {
 
 
     @FXML
-    void btnEnviarOnMouseClicked() {
-        Datos datos = new Datos();
-        if (usuarios.getValue() == null){
+    void enviarMensaje() {
+        DatosConexion datos = new DatosConexion();
+        if (usuariosConectados.getValue() == null){
             System.out.println("Seleccione a un destinatario");
         }else{
             try {
-                bufferDeSalida.writeUTF(datos.getNombre()+":"+usuarios.getValue()+":"+txtEnviar.getText());
+                bufferDeSalida.writeUTF(datos.getNombre()+":"+ usuariosConectados.getValue()+":"+txtEnviar.getText());
                 ThreadClient sms = new ThreadClient();
-                sms.misms("Tu: "+txtEnviar.getText(), usuarios.getValue());
+                sms.mostrarMensajes("Tu: "+txtEnviar.getText(), usuariosConectados.getValue());
                 bufferDeSalida.flush();
                 txtEnviar.clear();
             } catch (IOException e) {
@@ -67,7 +67,7 @@ public class Controller implements  Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnConectarOnMouseClicked();
+        conectar_al_Servidor();
     }
 
 

@@ -3,11 +3,11 @@ package Main.Model;
 public class Datosrecividos {
 
     private String id;
-    private String sms;
+    private String mensaje;
 
     public Datosrecividos(String id, String sms) {
         this.id = id;
-        this.sms = sms;
+        this.mensaje = sms;
     }
 
     public Datosrecividos(){
@@ -15,7 +15,7 @@ public class Datosrecividos {
     }
 
     public Datosrecividos(String s) {
-        this.sms = s;
+        this.mensaje = s;
     }
 
     public String getId() {
@@ -26,11 +26,11 @@ public class Datosrecividos {
         this.id = id;
     }
 
-    public String getSms() {
-        return sms;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setSms(String sms) {
-        this.sms = sms;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }

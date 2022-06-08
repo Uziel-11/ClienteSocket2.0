@@ -1,6 +1,6 @@
 package Main.Controller;
 
-import Main.Model.Datos;
+import Main.Model.DatosConexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,18 +17,18 @@ public class IngresarID {
     @FXML
     private TextField nombre;
     @FXML
-    Label sms;
+    Label mensaje;
 
     private String id;
 
     public void iniciar(ActionEvent eventbtn) throws IOException {
 
         if (nombre.getText().isEmpty()) {
-            sms.setText("Es necesario agregar un Nombre para Iniciar");
+            mensaje.setText("Es necesario agregar un Nombre para Iniciar");
         }else {
             id = nombre.getText();
             System.out.println(id);
-            Datos datos = new Datos();
+            DatosConexion datos = new DatosConexion();
             datos.setNombre(id);
             datos.setIp("localhost");
             datos.setPuerto(3000);
