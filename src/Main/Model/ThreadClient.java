@@ -1,17 +1,14 @@
 
 package Main.Model;
 
-import com.sun.source.tree.IfTree;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.concurrent.ThreadLocalRandom;
@@ -51,21 +48,16 @@ public class ThreadClient extends Observable implements Runnable {
                 try {
                     st = bufferDeEntrada.readUTF();
 
-                    //System.out.println("Recibiendo los mensajes del Servidor --> "+st);
                     String[] array = st.split(":");
 
                     if (array[0].equals("Conectado")){
                         Datos datos = new Datos();
                         if (array[2].equals(datos.getNombre())){
-                            //log.setText(st);
-                            //ObservableList<String> name = FXCollections.observableArrayList();
                             System.out.println(array[1]);
                             dat.setId(datos.getNombre());
                             dat.setSms(array[1]);
                             list.add(dat);
-                            //System.out.println(list);
                             textArea.setText(list.get(0).getSms());
-                            //name.clear();
                             obd.clear();
                             for (int i =4; i < Arrays.stream(array).count(); i++){
                                 if (datos.getNombre().equals(array[i])){
@@ -76,7 +68,6 @@ public class ThreadClient extends Observable implements Runnable {
                             }
 
                         }else {
-                            //ObservableList<String> name = FXCollections.observableArrayList();
                             System.out.println(array[2]);
                             String sms = list.get(0).getSms();
                             dat.setId(datos.getNombre());
@@ -91,7 +82,6 @@ public class ThreadClient extends Observable implements Runnable {
                                     conectados.setItems(obd);
                                 }
                             }
-                            //name.clear();
                         }
                     }else {
                         System.out.println("Insertando en su respectiva celda --> "+st);
@@ -105,11 +95,6 @@ public class ThreadClient extends Observable implements Runnable {
                                 aux = true;
                                 i = list.size();
                             }
-//                            }else {
-//                                if (i == list.size()-1 || aux ){
-//                                    aux = false;
-//                                }
-//                            }
 
                             if (aux == false){
                                 dat.setId(array[0]);
